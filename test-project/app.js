@@ -35,8 +35,9 @@ app.post('/signin', routes.doSignin);
 app.get('/signout', routes.signout);
 
 app.get('/admin', appMiddleware.authenticate, routes.admin);
-app.get('/admin/projects', appMiddleware.authenticate, routes.adminProjects)
-
+app.get('/admin/projects', appMiddleware.authenticate, routes.adminProjects);
+app.get('/admin/projects/create-new', appMiddleware.authenticate, routes.createProject);
+app.post('/admin/projects/create-new', appMiddleware.authenticate, routes.doCreateProject);
 
 app.get('/projects/:alias', routes.projectDetail);
 
@@ -47,16 +48,3 @@ app.use(errorHandlers.handleError);
 
 app.listen(3000, () => console.log('Server up n running on port 3000'))
 
-{
-    name:'Micheal',
-    hobbies: ['Dancer', 'Singer', 'Painter'],
-    born:1928,
-    password:'Hello'
-}
-
-{
-    name:'Arijit',
-    hobbies: [ 'Singer', 'Painter'],
-    born:1930,
-    password:'Hello'
-}
